@@ -1,6 +1,8 @@
 package cn.lfungame.exception;
 
 import cn.lfungame.util.ResponseMsg;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ControllerAdvice(basePackages = {"cn.lfungame"})
 public class GlobalExceptionHandler {
-
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @ExceptionHandler(value={MethodArgumentNotValidException.class, BusinessException.class, RuntimeException.class, Exception.class})
     @ResponseBody
     public ResponseMsg exceptionHandler(Exception e, HttpServletResponse response) {
@@ -64,7 +66,8 @@ public class GlobalExceptionHandler {
         }
         resp.setCode(ErrorInfo.UNKNOW_EXCEPTION.code);
         resp.setMessage(ErrorInfo.UNKNOW_EXCEPTION.desc);
-       // logger.error("[" + ErrorInfo.RUNTIME_EXCEPTIOON.code + "]" + ErrorInfo.RUNTIME_EXCEPTIOON.desc + ":", e);
+        logger.error("[" + ErrorInfo.RUNTIME_EXCEPTIOON.code + "]" + ErrorInfo.RUNTIME_EXCEPTIOON.desc + ":", e);
+        System.out.println(e.getStackTrace());
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return resp;
     }

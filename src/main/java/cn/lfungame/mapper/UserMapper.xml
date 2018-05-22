@@ -16,7 +16,7 @@
     </select>
 
     <select id="selectUsers"  resultType="User">
-        select * from user
+        select id, username, password from user
     </select>
 
     <insert id="insertUser" parameterType="cn.lfungame.model.User">
