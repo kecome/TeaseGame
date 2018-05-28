@@ -10,10 +10,6 @@ import java.util.Date;
  */
 public class Gamers extends BaseModel implements Serializable {
     /**
-     * 玩家id
-     */
-    private Long id;
-    /**
      * 微信登录成功后返回id
      */
     private Long wxId;
@@ -61,22 +57,7 @@ public class Gamers extends BaseModel implements Serializable {
      * 钻石
      */
     private Long diamonds;
-    /**
-     * 创建时间
-     */
-    private Date created;
-    /**
-     * 修改时间
-     */
-    private Date updated;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getWxId() {
         return wxId;
@@ -174,20 +155,5 @@ public class Gamers extends BaseModel implements Serializable {
         this.diamonds = diamonds;
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
 
 }
