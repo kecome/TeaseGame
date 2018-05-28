@@ -12,7 +12,7 @@ public class Gamers extends BaseModel implements Serializable {
     /**
      * 微信登录成功后返回id
      */
-    private Long wxId;
+    private String wxId;
     /**
      * 手机号码
      */
@@ -57,15 +57,6 @@ public class Gamers extends BaseModel implements Serializable {
      * 钻石
      */
     private Long diamonds;
-
-
-    public Long getWxId() {
-        return wxId;
-    }
-
-    public void setWxId(Long wxId) {
-        this.wxId = wxId;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -156,4 +147,11 @@ public class Gamers extends BaseModel implements Serializable {
     }
 
 
+    public String getWxId() {
+        return wxId;
+    }
+
+    public void setWxId(String wxId) {
+        this.wxId = wxId;
+    }
 }

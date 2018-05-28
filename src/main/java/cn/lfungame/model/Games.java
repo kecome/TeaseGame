@@ -6,5 +6,9 @@ package cn.lfungame.model;
  * @Description: 平台游戏
  */
 public class Games extends BaseModel{
-
+    /**
+     *
+     */
+    private String name;
+    private String icon;
 }
