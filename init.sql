@@ -7,13 +7,15 @@ create table `gamers` (
     `nickName` varchar(64) not null comment '呢称',
     `head` varchar(255) not null comment '头像',
     `sex` tinyint unsigned comment '性别',
-    `age` tinyint unsigned comment '年龄',
-    `birthday` datetime not null comment '生日',
-    `score` bigint unsigned  comment '总积分',
+    `age` datetime not null comment '出生年月',
+    `starSignId` tinyint unsigned comment '星座',
+    `signature` varchar(255) comment '个性签名',
+    `score` bigint unsigned  comment '积分',
+    `expPoints` bigint unsigned  comment 'experience points 经验值',
     `goldCoin` bigint unsigned  comment '金币',
     `diamonds` bigint unsigned  comment '钻石',
     `created` datetime not null comment '创建时间',
-    `updated` datetime not null comment '最近修改时间',
+    `updated` datetime not null comment '修改时间',
      primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家表，存放所有玩家个人信息';
 
@@ -27,17 +29,63 @@ create table `games` (
      primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '平台游戏';
 
-
 drop table if exists game_score;
 create table `game_score` (
     `id` bigint unsigned not null comment 'id号',
+    `gamerId` bigint unsigned not null comment '游戏玩家id',
     `gameId` bigint unsigned not null comment '游戏id',
     `score` bigint unsigned not null comment '积分',
+    `comment` varchar(255) not null comment '流水说明',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
      primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家游戏积分流水';
 
+drop table if exists goldCoin;
+create table `goldCoin` (
+    `id` bigint unsigned not null comment 'id号',
+    `gamerId` bigint unsigned not null comment '游戏玩家id',
+    `gold` bigint unsigned not null comment '金币',
+    `comment` varchar(255) not null comment '流水说明',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+     primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '金币流水表';
+
+drop table if exists diamonds;
+create table `diamonds` (
+    `id` bigint unsigned not null comment 'id号',
+    `gamerId` bigint unsigned not null comment '游戏玩家id',
+    `diamonds` bigint unsigned not null comment '钻石',
+    `comment` varchar(255) not null comment '流水说明',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+     primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '钻石流水表';
+
+drop table if exists experience_points;
+create table `experience_points` (
+    `id` bigint unsigned not null comment 'id号',
+    `gamerId` bigint unsigned not null comment '游戏玩家id',
+    `expPoints` bigint unsigned not null comment '经验值',
+    `comment` varchar(255) not null comment '流水说明',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+     primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '钻石流水表';
+
+drop table if exists gamer_result;
+create table `gamer_result` (
+    `id` bigint unsigned not null comment 'id号',
+    `gamerId_1` bigint unsigned not null comment '游戏玩家id 1',
+    `gamerId_2` bigint unsigned not null comment '游戏玩家id 2',
+    `gameId` bigint unsigned not null comment '游戏id',
+    `result` tinyint unsigned not null comment '胜负结果 0：负, 1: 胜',
+    `type` tinyint unsigned not null comment '单机模式：0  pk模式：1',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+     primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家胜负结果流水表';
 
 drop table if exists task;
 create table `task` (
@@ -84,95 +132,62 @@ create table `gamer_achievement` (
     `id` bigint unsigned not null comment 'id号',
     `gamerId` bigint unsigned not null comment '玩家id',
     `achievementId` bigint unsigned not null comment '成就id',
-    `status` tinyint unsigned not null comment '任务状态 0：未获得   1：已获得',
+    `status` tinyint unsigned not null comment '状态 0：未获得   1：已获得',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
     primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家成就';
 
 
-
-
-
-
-
-
-
-
-drop table if exists studentwork;
-create table `studentwork` (
+drop table if exists goods;
+create table `goods` (
     `id` bigint unsigned not null comment 'id号',
-    `homeworkId` bigint unsigned not null comment '作业id',
-    `studentId` bigint unsigned not null comment '学生id号',
-    `studentName` varchar(64) not null comment '学生名称',
-    `classId` bigint unsigned not null comment '班级id号',
-    `time` int unsigned comment '学生作业计时',
-    `submit` tinyint not null default 0 comment '学生是否提交：【0：未提交；1：已提交】',
-    `mark` tinyint not null default 0 comment '老师是否批阅：【0：未批阅；1：已批阅】',
-    `submitTime` datetime comment '提交时间',
+    `name` varchar(64) not null comment '商品名称',
+    `logo` varchar(255) not null comment '商品logo',
+    `type` tinyint unsigned not null comment '商品类型 0：金币   1：道具',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
      primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '学生作业表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '游戏商品';
 
-drop table if exists studentAnswer;
-create table `studentAnswer` (
+
+drop table if exists gamer_goods;
+create table `gamer_goods` (
     `id` bigint unsigned not null comment 'id号',
-    `questionId` bigint unsigned not null comment '所属题目id号',
-    `studentId` bigint unsigned not null comment '学生id号',
-    `answer` mediumblob comment '题目答案,主观题为照片url',
-    `isRight` tinyint comment '正确与否：【0：正确；1：错误】',
-    `comment` text comment '老师批阅',
+    `goodsId` bigint unsigned not null comment '商品id号',
+    `count` int not null comment '商品数量',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
      primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '学生答题表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家购买的商品';
 
-drop table if exists questionIndex;
-create table `questionIndex` (
-    `id` bigint unsigned not null comment 'id号',
-    `questionId` bigint unsigned not null comment '题目id号',
-    `studentworkId` bigint unsigned not null comment '学生作业id号',
+
+drop table if exists starSign;
+create table `starSign` (
+    `id` tinyint unsigned not null auto_increment comment 'id号',
+    `name` varchar(64) not null comment '星座名称',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
-     primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '学生退出答题记录';
+    primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '星座字典表';
 
-drop table if exists answerLog;
-create table `answerLog` (
-    `id` bigint unsigned not null comment 'id号',
-    `questionId` bigint unsigned not null comment '题目id号',
-    `studentId` bigint unsigned not null comment '学生id号',
-    `start` datetime not null comment '开始时间',
-    `end` datetime not null comment '开始时间',
+drop table if exists province;
+create table `province` (
+    `id` smallint unsigned not null auto_increment comment 'id号',
+    `name` varchar(64) not null comment '省名称',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
-     primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '学生答题时间日志记录';
+    primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '省字典表';
 
-drop table if exists message;
-create table `message` (
-    `id` bigint unsigned not null comment 'id号',
-    `studentId` bigint unsigned not null comment '消息接收者id号，学生',
-    `teacherId` bigint unsigned not null comment '消息发送者id号，老师',
-    `resourceId` bigint unsigned comment '目前只用作存homeworkId',
-    `type` tinyint not null comment '消息类型：【0：作业批阅消息】',
-    `content` text comment '消息内容',
-    `isRead` tinyint not null default 0 comment '是否查看：【0：未查看；1：已查看】',
+drop table if exists city;
+create table `city` (
+    `id` smallint unsigned not null auto_increment comment 'id号',
+    `name` varchar(64) not null comment '市名称',
+    `provinceId` bigint unsigned not null comment '所属省id号',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
-     primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '消息表';
+    primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '市字典表';
 
-drop table if exists attachment;
-create table `attachment` (
-    `id` bigint unsigned not null comment 'id号',
-    `fileName` varchar(256) not null comment '文件名称',
-    `extension` varchar(32) not null comment '文件后缀',
-    `url` varchar(256) not null comment '相对路径',
-    `size` bigint not null comment '文件大小',
-    `md5` varchar(128) not null comment '文件md5值',
-    `created` datetime not null comment '创建时间',
-    `updated` datetime not null comment '修改时间',
-     primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '附件表';
+
