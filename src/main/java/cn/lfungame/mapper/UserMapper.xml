@@ -37,20 +37,37 @@
             </if>
         </trim>
     </update>
-
+    <!--用户上传头像图片测试-->
     <insert id="insertGamers" parameterType="cn.lfungame.model.Gamers">
-        insert into gamers (id, wxId, deviceId,
-      phoneNumber, nickName, head,
-      sex, age, starSignId,
-      signature, score, expPoints,
-      goldCoin, diamonds, created,
-      updated)
-    values (#{id,jdbcType=BIGINT}, #{wxid,jdbcType=VARCHAR}, #{deviceid,jdbcType=VARCHAR},
-      #{phonenumber,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR},
-      #{sex,jdbcType=TINYINT}, #{age,jdbcType=TIMESTAMP}, #{starsignid,jdbcType=TINYINT},
-      #{signature,jdbcType=VARCHAR}, #{score,jdbcType=BIGINT}, #{exppoints,jdbcType=BIGINT},
-      #{goldcoin,jdbcType=BIGINT}, #{diamonds,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP},
-      #{updated,jdbcType=TIMESTAMP})
+        insert into gamers (
+                wxId,
+                deviceId,
+                phoneNumber,
+                nickName,
+                head,
+                sex,
+                age,
+                starSignId,
+                signature,
+                score,
+                expPoints,
+                goldCoin,
+                diamonds
+         )values (
+                #{wxId,jdbcType=VARCHAR},
+                #{deviceId,jdbcType=VARCHAR},
+                #{phoneNumber,jdbcType=VARCHAR},
+                #{nickName,jdbcType=VARCHAR},
+                #{head,jdbcType=VARCHAR},
+                #{sex,jdbcType=TINYINT},
+                #{age,jdbcType=TIMESTAMP},
+                #{starSignId,jdbcType=TINYINT},
+                #{signature,jdbcType=VARCHAR},
+                #{score,jdbcType=BIGINT},
+                #{expPoints,jdbcType=BIGINT},
+                #{goldCoin,jdbcType=BIGINT},
+                #{diamonds,jdbcType=BIGINT}
+                )
     </insert>
 
 </mapper>

@@ -37,8 +37,7 @@ public class ImageUploadController {
         value.put("errorCode", 0);
         value.put("errorMsg", "");
         try {
-            Gamers games = new Gamers();
-            String head = upDownService.updateHead(file, 4);//此处是调用上传服务接口，4是需要更新的userId 测试数据。
+            String head = upDownService.updateHead(file, 5);//此处是调用上传服务接口，4是需要更新的userId 测试数据。
             value.put("data", head);
             logger.info("文件上传成功");
         } catch (IOException e) {
