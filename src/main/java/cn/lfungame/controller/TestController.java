@@ -54,7 +54,6 @@ public class TestController {
 
     @RequestMapping("/feign")
     String feign() {
-
         System.out.println("调用成功sdfadsfdsafd");
         User u = new User();
         u.setUsername("username用圧");
