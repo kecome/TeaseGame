@@ -1,54 +1,103 @@
-drop table if exists `user`;
-create table `user` (
+drop table if exists `gamers`;
+create table `gamers` (
     `id` bigint unsigned not null comment 'id号',
-    `username` varchar(255) not null comment '用户名',
-    `password` varchar(255) not null comment '密码',
+    `wxId` varchar(64) not null comment '微信登录成功后返回id',
+    `deviceId` varchar(64) not null comment '玩家设备唯一标识id',
+    `phoneNumber` varchar(16) not null comment '手机号码',
+    `nickName` varchar(64) not null comment '呢称',
+    `head` varchar(255) not null comment '头像',
+    `sex` tinyint unsigned comment '性别',
+    `age` tinyint unsigned comment '年龄',
+    `birthday` datetime not null comment '生日',
+    `score` bigint unsigned  comment '总积分',
+    `goldCoin` bigint unsigned  comment '金币',
+    `diamonds` bigint unsigned  comment '钻石',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '最近修改时间',
      primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '用户表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家表，存放所有玩家个人信息';
 
-drop table if exists homework;
-create table `homework` (
+drop table if exists games;
+create table `games` (
     `id` bigint unsigned not null comment 'id号',
-    `teacherId` bigint unsigned not null comment '教师id号',
-    `subjectId` bigint unsigned not null comment '所属科目id号',
-    `subjectName` varchar(255) not null comment '科目名称',
-    `title` varchar(255) not null comment '作业名称',
-    `knowledge` varchar(255) comment '相关知识点',
-    `spentTime` int comment '预估完成时间,单位/分钟',
-    `status` tinyint not null default 0 comment '作业状态：【0：未发布；1：已发布】',
-    `publicTime` datetime comment '预约发布时间',
-    `endTime` datetime comment '截止提交时间',
+    `name` varchar(64) not null comment '游戏名称',
+    `icon` varchar(255) not null comment '游戏icon',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
      primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '作业表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '平台游戏';
 
-drop table if exists homework_class;
-create table `homework_class` (
+
+drop table if exists game_score;
+create table `game_score` (
     `id` bigint unsigned not null comment 'id号',
-    `homeworkId` bigint unsigned not null comment '作业id',
-    `classId` bigint unsigned not null comment '所属班级id号',
-    `className` varchar(255) not null comment '班级名称',
+    `gameId` bigint unsigned not null comment '游戏id',
+    `score` bigint unsigned not null comment '积分',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+     primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家游戏积分流水';
+
+
+drop table if exists task;
+create table `task` (
+    `id` bigint unsigned not null comment 'id号',
+    `name` varchar(64) not null comment '任务名称',
+    `desc` text not null comment '任务描述',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
     primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '作业班级关联表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '任务列表';
 
-drop table if exists question;
-create table `question` (
+drop table if exists gamer_task;
+create table `gamer_task` (
     `id` bigint unsigned not null comment 'id号',
-    `homeworkId` bigint unsigned not null comment '作业id',
-    `type` tinyint not null comment '题型：【0：选择题；1：主观题】',
-    `title` mediumblob not null comment '题干',
-    `seq` int comment '题目序号，作业展示时用于排序',
-    `answer` text comment '题目答案',
-    `item` varchar(128) comment '答案选项',
+    `gamerId` bigint unsigned not null comment '玩家id',
+    `taskId` bigint unsigned not null comment '任务id',
+    `status` tinyint unsigned not null comment '任务状态 0：未完成   1：已完成',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+    primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家任务';
+
+drop table if exists sign_in;
+create table `sign_in` (
+    `id` bigint unsigned not null comment 'id号',
+    `gamerId` bigint unsigned not null comment '玩家id',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+    primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '签到表';
+
+drop table if exists achievement;
+create table `achievement` (
+    `id` bigint unsigned not null comment 'id号',
+    `name` varchar(64) not null comment '成就名称',
+    `logo` varchar(255) not null comment '成就logo',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
      primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '题目表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '游戏成就';
+
+drop table if exists gamer_achievement;
+create table `gamer_achievement` (
+    `id` bigint unsigned not null comment 'id号',
+    `gamerId` bigint unsigned not null comment '玩家id',
+    `achievementId` bigint unsigned not null comment '成就id',
+    `status` tinyint unsigned not null comment '任务状态 0：未获得   1：已获得',
+    `created` datetime not null comment '创建时间',
+    `updated` datetime not null comment '修改时间',
+    primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家成就';
+
+
+
+
+
+
+
+
+
 
 drop table if exists studentwork;
 create table `studentwork` (
