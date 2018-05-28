@@ -165,7 +165,7 @@ create table `gamer_goods` (
 
 drop table if exists starSign;
 create table `starSign` (
-    `id` tinyint unsigned not null auto_increment comment 'id号',
+    `id` tinyint unsigned not null comment 'id号',
     `name` varchar(64) not null comment '星座名称',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
@@ -174,7 +174,7 @@ create table `starSign` (
 
 drop table if exists province;
 create table `province` (
-    `id` smallint unsigned not null auto_increment comment 'id号',
+    `id` smallint unsigned not null comment 'id号',
     `name` varchar(64) not null comment '省名称',
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
@@ -183,7 +183,7 @@ create table `province` (
 
 drop table if exists city;
 create table `city` (
-    `id` smallint unsigned not null auto_increment comment 'id号',
+    `id` smallint unsigned not null comment 'id号',
     `name` varchar(64) not null comment '市名称',
     `provinceId` bigint unsigned not null comment '所属省id号',
     `created` datetime not null comment '创建时间',
