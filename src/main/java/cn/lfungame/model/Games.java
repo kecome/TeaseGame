@@ -7,8 +7,27 @@ package cn.lfungame.model;
  */
 public class Games extends BaseModel{
     /**
-     *
+     *游戏名称
      */
     private String name;
+    /**
+     * 游戏icon
+     */
     private String icon;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 }

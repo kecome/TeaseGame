@@ -18,6 +18,10 @@ public class Gamers extends BaseModel implements Serializable {
      */
     private String phoneNumber;
     /**
+     * 玩家设备唯一标识id
+     */
+    private String deviceId;
+    /**
      * 呢称
      */
     private String nickName;
@@ -153,5 +157,13 @@ public class Gamers extends BaseModel implements Serializable {
 
     public void setWxId(String wxId) {
         this.wxId = wxId;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }
