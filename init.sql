@@ -72,7 +72,7 @@ create table `experience_points` (
     `created` datetime not null comment '创建时间',
     `updated` datetime not null comment '修改时间',
      primary key (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '钻石流水表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '经验值流水表';
 
 drop table if exists gamer_result;
 create table `gamer_result` (
@@ -154,6 +154,7 @@ create table `goods` (
 drop table if exists gamer_goods;
 create table `gamer_goods` (
     `id` bigint unsigned not null comment 'id号',
+    `gamerId` bigint unsigned not null comment '玩家id',
     `goodsId` bigint unsigned not null comment '商品id号',
     `count` int not null comment '商品数量',
     `created` datetime not null comment '创建时间',

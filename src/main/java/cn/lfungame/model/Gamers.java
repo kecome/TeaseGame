@@ -1,43 +1,73 @@
 package cn.lfungame.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @Auther: ZouLiFu
- * @Date: 2018/5/28 16:21
- * @Description:gamers实体类
+ * @Auther: xuke
+ * @Date: 2018/5/28 17:08
+ * @Description: 游戏玩家
  */
-public class Gamers  {
+public class Gamers extends BaseModel implements Serializable {
+    /**
+     * 玩家id
+     */
     private Long id;
-
-    private String wxid;
-
-    private String deviceid;
-
-    private String phonenumber;
-
-    private String nickname;
-
+    /**
+     * 微信登录成功后返回id
+     */
+    private Long wxId;
+    /**
+     * 手机号码
+     */
+    private String phoneNumber;
+    /**
+     * 呢称
+     */
+    private String nickName;
+    /**
+     * 头像
+     */
     private String head;
-
-    private Byte sex;
-
+    /**
+     * 性别
+     */
+    private Integer sex;
+    /**
+     * 出生年月
+     */
     private Date age;
-
-    private Byte starsignid;
-
+    /**
+     * 星座 id
+     */
+    private Integer starSignId;
+    /**
+     * 个性签名
+     */
     private String signature;
-
+    /**
+     * 积分
+     */
     private Long score;
-
-    private Long exppoints;
-
-    private Long goldcoin;
-
+    /**
+     * 经验值
+     */
+    private Long expPoints;
+    /**
+     * 金币
+     */
+    private Long goldCoin;
+    /**
+     * 钻石
+     */
     private Long diamonds;
-
+    /**
+     * 创建时间
+     */
     private Date created;
-
+    /**
+     * 修改时间
+     */
     private Date updated;
 
     public Long getId() {
@@ -48,36 +78,28 @@ public class Gamers  {
         this.id = id;
     }
 
-    public String getWxid() {
-        return wxid;
+    public Long getWxId() {
+        return wxId;
     }
 
-    public void setWxid(String wxid) {
-        this.wxid = wxid == null ? null : wxid.trim();
+    public void setWxId(Long wxId) {
+        this.wxId = wxId;
     }
 
-    public String getDeviceid() {
-        return deviceid;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setDeviceid(String deviceid) {
-        this.deviceid = deviceid == null ? null : deviceid.trim();
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber == null ? null : phonenumber.trim();
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getHead() {
@@ -85,14 +107,14 @@ public class Gamers  {
     }
 
     public void setHead(String head) {
-        this.head = head == null ? null : head.trim();
+        this.head = head;
     }
 
-    public Byte getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(Byte sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
@@ -104,12 +126,12 @@ public class Gamers  {
         this.age = age;
     }
 
-    public Byte getStarsignid() {
-        return starsignid;
+    public Integer getStarSignId() {
+        return starSignId;
     }
 
-    public void setStarsignid(Byte starsignid) {
-        this.starsignid = starsignid;
+    public void setStarSignId(Integer starSignId) {
+        this.starSignId = starSignId;
     }
 
     public String getSignature() {
@@ -117,7 +139,7 @@ public class Gamers  {
     }
 
     public void setSignature(String signature) {
-        this.signature = signature == null ? null : signature.trim();
+        this.signature = signature;
     }
 
     public Long getScore() {
@@ -128,20 +150,20 @@ public class Gamers  {
         this.score = score;
     }
 
-    public Long getExppoints() {
-        return exppoints;
+    public Long getExpPoints() {
+        return expPoints;
     }
 
-    public void setExppoints(Long exppoints) {
-        this.exppoints = exppoints;
+    public void setExpPoints(Long expPoints) {
+        this.expPoints = expPoints;
     }
 
-    public Long getGoldcoin() {
-        return goldcoin;
+    public Long getGoldCoin() {
+        return goldCoin;
     }
 
-    public void setGoldcoin(Long goldcoin) {
-        this.goldcoin = goldcoin;
+    public void setGoldCoin(Long goldCoin) {
+        this.goldCoin = goldCoin;
     }
 
     public Long getDiamonds() {
@@ -167,4 +189,5 @@ public class Gamers  {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
+
 }
