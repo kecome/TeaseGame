@@ -8,9 +8,21 @@ import java.util.Date;
  * @Description: 星座字典表
  */
 public class StarSign{
+    /**
+     * id
+     */
     private Integer id;
+    /**
+     * 星座名称
+     */
     private String name;
+    /**
+     * 创建时间
+     */
     private Date created;
+    /**
+     * 修改时间
+     */
     private Date updated;
 
     public Integer getId() {

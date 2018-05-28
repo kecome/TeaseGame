@@ -23,11 +23,11 @@ public class city{
     private Long provinceId;
 
     /**
-     *
+     * 创建时间
      */
     private Date created;
     /**
-     *
+     * 修改时间
      */
     private Date updated;
 
