@@ -2,22 +2,18 @@ package cn.lfungame.model;
 
 /**
  * @Auther: xuke
- * @Date: 2018/5/28 17:19
- * @Description: 玩家游戏积分流水
+ * @Date: 2018/5/28 17:35
+ * @Description: 经验值流水表
  */
-public class GameScore extends BaseModel{
+public class ExperiencePoints extends BaseModel{
     /**
      * 游戏玩家id
      */
     private Long gamerId;
     /**
-     * 游戏id
+     * 经验值
      */
-    private Long gameId;
-    /**
-     * 积分
-     */
-    private Long score;
+    private Long expPoints;
     /**
      * 流水说明
      */
@@ -31,20 +27,12 @@ public class GameScore extends BaseModel{
         this.gamerId = gamerId;
     }
 
-    public Long getGameId() {
-        return gameId;
+    public Long getExpPoints() {
+        return expPoints;
     }
 
-    public void setGameId(Long gameId) {
-        this.gameId = gameId;
-    }
-
-    public Long getScore() {
-        return score;
-    }
-
-    public void setScore(Long score) {
-        this.score = score;
+    public void setExpPoints(Long expPoints) {
+        this.expPoints = expPoints;
     }
 
     public String getComment() {
