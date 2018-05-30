@@ -101,6 +101,17 @@
       <artifactId>aliyun-sdk-oss</artifactId>
       <version>2.4.0</version>
     </dependency>
+    <!--短信sdk-->
+    <dependency>
+      <groupId>com.aliyun</groupId>
+      <artifactId>aliyun-java-sdk-core</artifactId>
+      <version>3.7.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.aliyun</groupId>
+      <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+      <version>1.1.0</version>
+    </dependency>
   </dependencies>
 
   <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
