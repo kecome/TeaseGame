@@ -8,7 +8,7 @@ import java.util.Date;
  * @Date: 2018/5/28 17:08
  * @Description: 游戏玩家
  */
-public class Gamers extends BaseModel implements Serializable {
+public class Gamer extends BaseModel implements Serializable {
     /**
      * 微信登录成功后返回id
      */

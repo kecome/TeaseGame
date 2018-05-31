@@ -5,7 +5,7 @@ package cn.lfungame.model;
  * @Date: 2018/5/28 17:10
  * @Description: 平台游戏
  */
-public class Games extends BaseModel{
+public class Game extends BaseModel{
     /**
      *游戏名称
      */

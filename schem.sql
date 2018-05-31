@@ -1,5 +1,5 @@
-drop table if exists `gamers`;
-create table `gamers` (
+drop table if exists `gamer`;
+create table `gamer` (
     `id` bigint unsigned not null comment 'id号',
     `wxId` varchar(64) not null comment '微信登录成功后返回id',
     `deviceId` varchar(64) not null comment '玩家设备唯一标识id',
@@ -21,8 +21,8 @@ create table `gamers` (
      primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 comment = '玩家表，存放所有玩家个人信息';
 
-drop table if exists games;
-create table `games` (
+drop table if exists game;
+create table `game` (
     `id` bigint unsigned not null comment 'id号',
     `name` varchar(64) not null comment '游戏名称',
     `icon` varchar(255) not null comment '游戏icon',

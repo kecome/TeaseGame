@@ -38,7 +38,7 @@
         </trim>
     </update>
     <!--用户上传头像图片测试-->
-    <insert id="insertGamers" parameterType="cn.lfungame.model.Gamers">
+    <insert id="insertGamers" parameterType="cn.lfungame.model.Gamer">
         insert into gamers (
                 wxId,
                 deviceId,

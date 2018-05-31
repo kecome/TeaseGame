@@ -1,6 +1,6 @@
 package cn.lfungame.mapper;
 
-import cn.lfungame.model.Gamers;
+import cn.lfungame.model.Gamer;
 import cn.lfungame.model.User;
 
 import java.util.List;
@@ -16,6 +16,6 @@ public interface UserMapper {
     List<User> selectUsers();
     void insertUser(User user);
     void updateUser(User user);
-    void insertGamers(Gamers gamers);
+    void insertGamers(Gamer gamers);
 }
 
