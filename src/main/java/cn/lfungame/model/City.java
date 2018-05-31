@@ -7,7 +7,7 @@ import java.util.Date;
  * @Date: 2018/5/28 18:36
  * @Description:
  */
-public class city{
+public class City {
     /**
      * id
      */
