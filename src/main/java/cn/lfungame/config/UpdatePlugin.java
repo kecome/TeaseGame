@@ -2,6 +2,7 @@ package cn.lfungame.config;
 
 import cn.lfungame.model.BaseModel;
 import cn.lfungame.util.Pretreatment;
+import cn.lfungame.util.SnowflakeIdWorker;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -42,7 +43,7 @@ public class UpdatePlugin implements Interceptor {
                 if(SqlCommandType.UPDATE.equals(sqlCommandType)) {
                     model.setUpdated(d);
                 }else if(SqlCommandType.INSERT.equals(sqlCommandType)) {
-                    model.setId(Pretreatment.nextId());
+                    model.setId(SnowflakeIdWorker.getInstance().nextId());
                     model.setCreated(d);
                     model.setUpdated(d);
                 }

@@ -4,6 +4,7 @@ import cn.lfungame.feignclients.GameClient;
 import cn.lfungame.model.User;
 import cn.lfungame.util.ResponseMsg;
 import cn.lfungame.service.UserService;
+import cn.lfungame.util.UserUtil;
 import com.github.pagehelper.PageSerializable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Auther: xuke
@@ -29,7 +32,9 @@ public class TestController {
     private UserService userService;
 
     @RequestMapping("/t")
-    String home() {
+    String home(HttpServletRequest request) {
+       // String token = request.getHeader("id");
+        System.out.println("token串为java：" + UserUtil.getCurrentUser());
         logger.info("请求方法getClasses参数----->dsfadsfdsfdsafsdfa");
         System.out.println("提用成功");
         return "Hello World!";

@@ -1,13 +1,13 @@
 drop table if exists `gamer`;
 create table `gamer` (
     `id` bigint unsigned not null comment 'id号',
-    `wxId` varchar(64) not null comment '微信登录成功后返回id',
+    `wxId` varchar(64) comment '微信登录成功后返回id',
     `deviceId` varchar(64) not null comment '玩家设备唯一标识id',
-    `phoneNumber` varchar(16) not null comment '手机号码',
-    `nickName` varchar(64) not null comment '呢称',
-    `head` varchar(255) not null comment '头像',
+    `phoneNumber` varchar(16) comment '手机号码',
+    `nickName` varchar(64) comment '呢称',
+    `head` varchar(255) comment '头像',
     `sex` tinyint unsigned comment '性别',
-    `age` datetime not null comment '出生年月',
+    `age` datetime comment '出生年月',
     `starSignId` tinyint unsigned comment '星座',
     `provinceId` smallint unsigned comment '省',
     `cityId` smallint unsigned comment '市',
