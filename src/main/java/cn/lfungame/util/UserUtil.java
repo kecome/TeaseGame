@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Description:
  */
 public class UserUtil {
-    public static Long getCurrentUser(){
+    public static Long getCurrentUserId(){
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         Long id = Long.valueOf(request.getHeader("id"));
         return id;
