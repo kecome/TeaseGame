@@ -5,6 +5,7 @@ import cn.lfungame.service.GamerService;
 import cn.lfungame.util.ResponseMsg;
 import cn.lfungame.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +27,10 @@ public class GamerController {
      * @param gamer
      * @return
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     Object updateGamer(@RequestBody Gamer gamer) {
         ResponseMsg msg = new ResponseMsg();
+        System.out.println("当前用户id:" + UserUtil.getCurrentUserId());
         gamer.setId(UserUtil.getCurrentUserId());
         gamerService.updateGamer(gamer);
         msg.setMessage("更新成功");

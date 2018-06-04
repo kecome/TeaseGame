@@ -34,7 +34,7 @@ public class TestController {
     @RequestMapping("/t")
     String home(HttpServletRequest request) {
        // String token = request.getHeader("id");
-        System.out.println("token串为java：" + UserUtil.getCurrentUser());
+        System.out.println("token串为java：" + UserUtil.getCurrentUserId());
         logger.info("请求方法getClasses参数----->dsfadsfdsfdsafsdfa");
         System.out.println("提用成功");
         return "Hello World!";

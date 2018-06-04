@@ -42,6 +42,14 @@ public class Gamer extends BaseModel implements Serializable {
      */
     private Integer starSignId;
     /**
+     * 省
+     */
+    private Integer provinceId;
+    /**
+     * 市
+     */
+    private Integer cityId;
+    /**
      * 个性签名
      */
     private String signature;
@@ -165,5 +173,21 @@ public class Gamer extends BaseModel implements Serializable {
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public Integer getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 }
