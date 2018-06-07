@@ -1,5 +1,7 @@
 package cn.lfungame.model;
 
+import cn.lfungame.util.StarSignUtil;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -30,7 +32,7 @@ public class Gamer extends BaseModel implements Serializable {
      */
     private String head;
     /**
-     * 性别
+     * 性别 0:男  1:女
      */
     private Integer sex;
     /**
@@ -38,17 +40,17 @@ public class Gamer extends BaseModel implements Serializable {
      */
     private Date age;
     /**
-     * 星座 id
+     * 星座
      */
-    private Integer starSignId;
+    private String starSign;
     /**
      * 省
      */
-    private Integer provinceId;
+    private String province;
     /**
      * 市
      */
-    private Integer cityId;
+    private String city;
     /**
      * 个性签名
      */
@@ -107,15 +109,10 @@ public class Gamer extends BaseModel implements Serializable {
     }
 
     public void setAge(Date age) {
+        if(age != null) {
+            this.starSign = StarSignUtil.getConstellation(age);
+        }
         this.age = age;
-    }
-
-    public Integer getStarSignId() {
-        return starSignId;
-    }
-
-    public void setStarSignId(Integer starSignId) {
-        this.starSignId = starSignId;
     }
 
     public String getSignature() {
@@ -175,19 +172,27 @@ public class Gamer extends BaseModel implements Serializable {
         this.deviceId = deviceId;
     }
 
-    public Integer getProvinceId() {
-        return provinceId;
+    public String getStarSign() {
+        return starSign;
     }
 
-    public void setProvinceId(Integer provinceId) {
-        this.provinceId = provinceId;
+    public void setStarSign(String starSign) {
+        this.starSign = starSign;
     }
 
-    public Integer getCityId() {
-        return cityId;
+    public String getProvince() {
+        return province;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

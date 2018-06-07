@@ -19,4 +19,5 @@ public interface GameClient {
 
     @RequestMapping(method = RequestMethod.POST, value = "/game/user")
     String getUser(@RequestBody User user);
+
 }

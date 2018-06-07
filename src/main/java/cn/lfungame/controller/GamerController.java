@@ -36,4 +36,5 @@ public class GamerController {
         msg.setMessage("更新成功");
         return msg;
     }
+
 }

@@ -1,6 +1,7 @@
 package cn.lfungame.controller;
 
 import cn.lfungame.feignclients.GameClient;
+import cn.lfungame.feignclients.LocationClient;
 import cn.lfungame.model.User;
 import cn.lfungame.util.ResponseMsg;
 import cn.lfungame.service.UserService;
@@ -31,6 +32,7 @@ public class TestController {
     @Autowired
     private UserService userService;
 
+
     @RequestMapping("/t")
     String home(HttpServletRequest request) {
        // String token = request.getHeader("id");
@@ -44,7 +46,8 @@ public class TestController {
     Object index() {
         System.out.println("提用成功sdfadsfdsafd");
 
-        return userService.selectUserById(123L);
+        //return locationClient.getLocation("34.350178", "108.949324");
+        return null;
     }
 
     @RequestMapping("/all")

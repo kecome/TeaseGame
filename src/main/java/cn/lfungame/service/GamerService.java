@@ -4,7 +4,9 @@ import cn.lfungame.mapper.GamerMapper;
 import cn.lfungame.model.Gamer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,5 +40,9 @@ public class GamerService {
 
     public Gamer selectGamerByPhoneNumber(String phoneNumber) {
         return gamerMapper.selectGamerByPhoneNumber(phoneNumber);
+    }
+
+    private Integer convertAgeToStarSignId(Date age) {
+        return null;
     }
 }
