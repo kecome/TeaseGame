@@ -27,8 +27,8 @@ public class TestController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private GameClient gameClient;
+   // @Autowired
+   // private GameClient gameClient;
     @Autowired
     private UserService userService;
 
@@ -66,7 +66,8 @@ public class TestController {
         User u = new User();
         u.setUsername("username用圧");
         u.setPassword("root password");
-        return gameClient.getUser(u);
+        //return gameClient.getUser(u);
+        return null;
     }
 
     @RequestMapping("/add")
