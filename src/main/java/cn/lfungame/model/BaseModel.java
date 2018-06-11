@@ -1,23 +1,24 @@
 package cn.lfungame.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 /**
  * @Auther: xuke
  * @Date: 2018/5/16 14:38
  * @Description: model公共属性类
  */
+@ApiModel(value="baseModel", description = "实体基类")
 public class BaseModel {
-    /**
-     * id号
-     */
+
+    @ApiModelProperty(value="id号")
     private Long id;
-    /**
-     * 创建时间
-     */
+
+    @ApiModelProperty(value="创建时间 ")
     private Date created;
-    /**
-     * 最近修改时间
-     */
+
+    @ApiModelProperty(value="最近修改时间")
     private Date updated;
 
     public Long getId() {

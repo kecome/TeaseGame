@@ -4,6 +4,8 @@ import cn.lfungame.model.Gamer;
 import cn.lfungame.service.GamerService;
 import cn.lfungame.util.ResponseMsg;
 import cn.lfungame.util.UserUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date: 2018/6/4 14:47
  * @Description:hh
  */
+@Api(tags = "玩家信息相关api")
 @RestController
 @RequestMapping("/gamer")
 public class GamerController {
@@ -25,6 +28,7 @@ public class GamerController {
      * @return
      */
     @PostMapping("/update")
+    @ApiOperation(value="玩家信息更新", notes="玩家个人信息更新")
     Object updateGamer(@RequestBody Gamer gamer) {
         ResponseMsg msg = new ResponseMsg();
         System.out.println("当前用户id:" + UserUtil.getCurrentUserId());
@@ -35,6 +39,7 @@ public class GamerController {
     }
 
     @GetMapping("/get")
+    @ApiOperation(value="获取玩家信息", notes="获取玩家信息")
     Object getGamer() {
         ResponseMsg msg = new ResponseMsg();
         Gamer gamer = gamerService.selectGamerById(UserUtil.getCurrentUserId());
