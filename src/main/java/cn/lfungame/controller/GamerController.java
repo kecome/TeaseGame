@@ -29,7 +29,7 @@ public class GamerController {
      */
     @PostMapping("/update")
     @ApiOperation(value="玩家信息更新", notes="玩家个人信息更新")
-    Object updateGamer(@RequestBody Gamer gamer) {
+    ResponseMsg updateGamer(@RequestBody Gamer gamer) {
         ResponseMsg msg = new ResponseMsg();
         System.out.println("当前用户id:" + UserUtil.getCurrentUserId());
         gamer.setId(UserUtil.getCurrentUserId());
@@ -40,8 +40,8 @@ public class GamerController {
 
     @GetMapping("/get")
     @ApiOperation(value="获取玩家信息", notes="获取玩家信息")
-    Object getGamer() {
-        ResponseMsg msg = new ResponseMsg();
+    ResponseMsg<Gamer> getGamer() {
+        ResponseMsg<Gamer> msg = new ResponseMsg();
         Gamer gamer = gamerService.selectGamerById(UserUtil.getCurrentUserId());
         msg.setData(gamer);
         return msg;
