@@ -1,6 +1,7 @@
 package cn.lfungame.model;
 
 import cn.lfungame.util.StarSignUtil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -34,6 +35,7 @@ public class Gamer extends BaseModel implements Serializable {
     private Integer sex;
 
     @ApiModelProperty(value="出生年月")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date age;
 
     @ApiModelProperty(value="星座 ")

@@ -1,22 +1,23 @@
 package cn.lfungame.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @Auther: xuke
  * @Date: 2018/5/28 17:35
  * @Description: 经验值流水表
  */
+@ApiModel(value="experiencePoints", description = "经验值流水记录")
 public class ExperiencePoints extends BaseModel{
-    /**
-     * 游戏玩家id
-     */
+
+    @ApiModelProperty(value="游戏玩家id")
     private Long gamerId;
-    /**
-     * 经验值
-     */
+
+    @ApiModelProperty(value="经验值")
     private Long expPoints;
-    /**
-     * 流水说明
-     */
+
+    @ApiModelProperty(value="流水说明")
     private String comment;
 
     public Long getGamerId() {

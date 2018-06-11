@@ -1,18 +1,20 @@
 package cn.lfungame.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @Auther: xuke
  * @Date: 2018/5/28 18:09
  * @Description: 游戏成就
  */
+@ApiModel(value="achievement", description = "游戏成就")
 public class Achievement extends BaseModel{
-    /**
-     * 成就名称
-     */
+
+    @ApiModelProperty(value="成就名称")
     private String name;
-    /**
-     * 成就logo
-     */
+
+    @ApiModelProperty(value="成就logo")
     private String logo;
 
     public String getName() {

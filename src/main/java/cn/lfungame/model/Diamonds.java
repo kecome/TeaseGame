@@ -1,22 +1,23 @@
 package cn.lfungame.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @Auther: xuke
  * @Date: 2018/5/28 17:31
  * @Description:
  */
+@ApiModel(value="diamonds", description = "钻石流水记录")
 public class Diamonds extends BaseModel{
-    /**
-     * 游戏玩家id
-     */
+
+    @ApiModelProperty(value="游戏玩家id")
     private Long gamerId;
-    /**
-     * 钻石
-     */
+
+    @ApiModelProperty(value="钻石")
     private Long diamonds;
-    /**
-     * 流水说明
-     */
+
+    @ApiModelProperty(value="流水说明")
     private String comment;
 
     public Long getGamerId() {
